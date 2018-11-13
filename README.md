@@ -1,5 +1,7 @@
 # node-ubuntu-setup
 
+## ubuntu 16.4
+
 1. install zsh if you want ( requires a restart )
 ```sh
 apt-get install zsh
@@ -16,7 +18,17 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 ```
 
-3. install <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">mongodb</a> ( ubuntu 16.4 ) 
+3. setup ubuntu firewall
+```sh
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
+```
+
+4. install <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">mongodb</a> 
 ```sh
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
@@ -25,12 +37,12 @@ sudo apt-get install -y mongodb-org
 sudo service mongod start
 ```
 
-4. firewall
+
+5. SSL encryption from <a htef="https://letsencrypt.org/">Let's Encrypt</a>
 ```sh
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
-sudo ufw enable
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot
+sudo certbot certonly --standalone -d [YOUR_DOMAIN_HERE]
 ```
