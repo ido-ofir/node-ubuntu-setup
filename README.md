@@ -28,3 +28,12 @@ sudo apt-get install -y mongodb-org
 
 sudo service mongod start
 ```
+
+4. firewall
+```sh
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+```
