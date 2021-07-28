@@ -40,9 +40,8 @@ sudo systemctl start mongod.service
 
 5. SSL encryption from <a htef="https://letsencrypt.org/">Let's Encrypt</a>
 ```sh
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install certbot
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot certonly --standalone -d [YOUR_DOMAIN_HERE]
 ```
