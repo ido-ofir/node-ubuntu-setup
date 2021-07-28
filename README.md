@@ -1,6 +1,6 @@
 # node-ubuntu-setup
 
-## ubuntu 16.4
+                  ## ubuntu 18.04
 
 1. install zsh if you want ( requires a restart )
 ```sh
@@ -13,7 +13,7 @@ sudo shutdown -r 0
 
 2. install node
 ```sh
-curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 ```
@@ -30,11 +30,11 @@ sudo ufw enable
 
 4. install <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">mongodb</a> 
 ```sh
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
-sudo apt-get update
-sudo apt-get install -y mongodb-org
-sudo service mongod start
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+sudo apt update
+sudo apt install mongodb-org
+sudo systemctl start mongod.service
 ```
 
 
